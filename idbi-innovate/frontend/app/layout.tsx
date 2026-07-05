@@ -1,7 +1,7 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Landmark, LayoutDashboard, IdCard, ShieldCheck } from "lucide-react";
+import { Landmark, LayoutDashboard, CreditCard, ShieldCheck } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "MSME Financial Health Card — IDBI Innovate 2026",
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </div>
             <nav className="flex items-center gap-1">
               <Link href="/" className="btn">
-                <IdCard size={16} /> Underwriter Cockpit
+                <CreditCard size={16} /> Underwriter Cockpit
               </Link>
               <Link href="/portfolio" className="btn">
                 <LayoutDashboard size={16} /> Portfolio Impact
