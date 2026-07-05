@@ -3,18 +3,29 @@ import { useEffect, useState } from "react";
 import { api } from "@/lib/api";
 import { RagBadge, RecoBadge } from "./badges";
 import { inr } from "@/lib/format";
-import { Eye, EyeOff, Loader2 } from "lucide-react";
+import { Eye, EyeOff, Loader2, Ban } from "lucide-react";
 
-// THE MONEY SHOT: strip the alternate data (leaving only bureau+GST, the
-// "traditional" lens) and show what the borrower looks like to a legacy model vs
-// with alternate data. For a New-to-Credit applicant, traditional = invisible.
 const ALT_SOURCES = ["upi", "aa", "epf", "electricity", "fuel", "fastag"];
 
-export default function TraditionalCompare({ entityId, current }: { entityId: string; current: { rag: string; unified_score: number; recommendation: string; suggested_limit: number } }) {
+export default function TraditionalCompare({
+  entityId,
+  current,
+}: {
+  entityId: string;
+  current: any;
+}) {
   const [trad, setTrad] = useState<any | null>(null);
   const [loading, setLoading] = useState(true);
 
+  const hasGst = current?.cross_validation?.estimates?.gst != null;
+  const hasBureau = current?.is_ntc === false;
+  const canAssess = hasGst || hasBureau;
+
   useEffect(() => {
+    if (!canAssess) {
+      setLoading(false);
+      return;
+    }
     let alive = true;
     setLoading(true);
     api
@@ -25,7 +36,7 @@ export default function TraditionalCompare({ entityId, current }: { entityId: st
     return () => {
       alive = false;
     };
-  }, [entityId]);
+  }, [entityId, canAssess]);
 
   return (
     <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -35,6 +46,20 @@ export default function TraditionalCompare({ entityId, current }: { entityId: st
         </div>
         {loading ? (
           <Loader2 className="animate-spin text-slate-400" size={18} />
+        ) : !canAssess ? (
+          <>
+            <div className="flex items-center gap-2">
+              <span className="chip bg-red-100 text-red-800">
+                <Ban size={12} /> Cannot assess
+              </span>
+              <RecoBadge reco="DECLINE" />
+            </div>
+            <div className="mt-2 text-3xl font-bold text-rag-red">Rejected</div>
+            <p className="mt-2 text-xs text-slate-500">
+              No bureau score and no financial statements — a legacy model has nothing to
+              assess, so this borrower is declined outright.
+            </p>
+          </>
         ) : trad ? (
           <>
             <div className="flex items-center gap-2">
@@ -43,11 +68,10 @@ export default function TraditionalCompare({ entityId, current }: { entityId: st
             </div>
             <div className="mt-2 text-sm text-slate-600">
               Score <b className="tabular-nums">{trad.unified_score?.toFixed(0)}</b> · limit{" "}
-              <b>{inr(trad.suggested_limit)}</b> · confidence{" "}
-              <b>{trad.data_confidence?.toFixed(0)}%</b>
+              <b>{inr(trad.suggested_limit)}</b> · confidence <b>{trad.data_confidence?.toFixed(0)}%</b>
             </div>
             <p className="mt-2 text-xs text-slate-500">
-              What a legacy bureau/GST-only model sees — often too little to lend on.
+              What a legacy bureau/GST-only model sees — often too thin to lend on.
             </p>
           </>
         ) : (
