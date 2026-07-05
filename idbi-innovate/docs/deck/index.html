@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MSME Financial Health Card — IDBI Innovate 2026</title>
+<style>
+  :root{
+    --brand:#4f46e5; --brand-dark:#4338ca; --ink:#0f172a; --slate:#475569;
+    --muted:#94a3b8; --line:#e2e8f0; --bg:#f8fafc;
+    --green:#16a34a; --amber:#d97706; --red:#dc2626;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:var(--ink);background:#0b1020}
+  .deck{height:100vh;overflow:hidden;position:relative}
+  .slide{position:absolute;inset:0;display:none;padding:6vh 8vw;background:var(--bg);
+    flex-direction:column;justify-content:center;animation:fade .35s ease}
+  .slide.active{display:flex}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  h1{font-size:clamp(28px,4.5vw,56px);line-height:1.05;letter-spacing:-.02em}
+  h2{font-size:clamp(22px,3.2vw,40px);line-height:1.1;margin-bottom:.5em;letter-spacing:-.01em}
+  h3{font-size:clamp(15px,1.4vw,20px);color:var(--brand-dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.8em;font-weight:700}
+  p,li{font-size:clamp(14px,1.5vw,20px);color:var(--slate);line-height:1.5}
+  .lead{font-size:clamp(18px,2vw,26px);color:var(--ink)}
+  .kicker{display:inline-block;background:#eef2ff;color:var(--brand-dark);font-weight:700;
+    font-size:13px;padding:6px 12px;border-radius:99px;letter-spacing:.05em;margin-bottom:18px}
+  ul{margin:.4em 0 0 1.1em}li{margin:.35em 0}
+  .grid{display:grid;gap:18px;margin-top:18px}
+  .g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;box-shadow:0 1px 3px rgba(15,23,42,.06)}
+  .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+  .stat .num{font-size:clamp(28px,3.6vw,44px);font-weight:800;color:var(--brand)}
+  .stat .lbl{font-size:13px;color:var(--slate);margin-top:4px}
+  .pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;color:#fff}
+  .green{background:var(--green)}.amber{background:var(--amber)}.red{background:var(--red)}
+  .tag{display:inline-block;background:#f1f5f9;border:1px solid var(--line);border-radius:8px;
+    padding:5px 10px;margin:3px;font-size:13px;color:var(--slate)}
+  .foot{position:absolute;bottom:3vh;left:8vw;right:8vw;display:flex;justify-content:space-between;
+    align-items:center;font-size:12px;color:var(--muted)}
+  .nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;gap:6px;z-index:30}
+  .dot{width:8px;height:8px;border-radius:99px;background:#334155;opacity:.4;cursor:pointer;border:0}
+  .dot.on{opacity:1;background:var(--brand);width:22px}
+  .brandbar{height:6px;background:linear-gradient(90deg,var(--brand),#0891b2);border-radius:99px;width:70px;margin-bottom:22px}
+  .big{font-size:clamp(30px,4vw,52px);font-weight:800;line-height:1.1}
+  .muted{color:var(--muted)}
+  .em{color:var(--ink);font-weight:600}
+  table{width:100%;border-collapse:collapse;margin-top:10px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);font-size:15px}
+  th{color:var(--slate);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+  .center{align-items:center;text-align:center}
+  .flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .box{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;font-weight:600}
+  .arrow{color:var(--brand);font-weight:800}
+  @media print{.slide{display:flex!important;position:relative;height:100vh;page-break-after:always}.nav{display:none}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1 TITLE -->
+  <section class="slide active center">
+    <div class="brandbar" style="margin:0 auto 22px"></div>
+    <div class="kicker">IDBI INNOVATE 2026 · TRACK 03 · CREDIT DECISIONING</div>
+    <h1>MSME Financial<br/>Health Card</h1>
+    <p class="lead" style="margin-top:20px;max-width:820px">
+      AI-driven credit decisioning that makes <span class="em">credit-invisible</span> MSMEs
+      visible — using the alternate data they already generate.
+    </p>
+    <div class="foot"><span>Financial Inclusion · Digital Lending</span><span>Team submission</span></div>
+  </section>
+
+  <!-- 2 PROBLEM -->
+  <section class="slide">
+    <h3>The Problem</h3>
+    <h2>63 million MSMEs. A ₹20–25 lakh crore credit gap.</h2>
+    <div class="grid g2">
+      <div>
+        <p>Banks assess credit with <span class="em">traditional documents</span> — ITR, audited
+        balance sheets, bank statements, and a bureau (CIBIL) score.</p>
+        <p style="margin-top:12px">New-to-Credit (NTC) and New-to-Bank (NTB) MSMEs simply
+        <span class="em">don't have them</span>. No loan history → no bureau score → auto-rejected.</p>
+        <p style="margin-top:12px">They aren't uncreditworthy. They're <span class="em">invisible.</span></p>
+      </div>
+      <div class="card">
+        <h3>Who gets left out</h3>
+        <div class="flow">
+          <span class="tag">Kirana & retail</span><span class="tag">Fabrication units</span>
+          <span class="tag">Transporters</span><span class="tag">Traders</span>
+          <span class="tag">Gig workers</span><span class="tag">Agri</span>
+        </div>
+        <p style="margin-top:14px" class="muted">Rich businesses, thin files. The bank has no lens to see them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 INSIGHT -->
+  <section class="slide center">
+    <div class="brandbar" style="margin:0 auto 22px"></div>
+    <h2 style="max-width:960px">A business with no loan documents still leaves a rich digital footprint.</h2>
+    <p class="lead" style="max-width:820px;margin-top:10px">
+      GST filings · UPI flows · bank statements (AA) · EPF payroll · <span class="em">electricity</span> ·
+      fuel · FASTag · Udyam. Read them right, and creditworthiness is visible in seconds.
+    </p>
+  </section>
+
+  <!-- 4 SOLUTION -->
+  <section class="slide">
+    <h3>The Solution</h3>
+    <h2>An explainable Financial Health Card for the underwriter</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Aggregate</h3><p>Consented alternate data via AA / OCEN / ULI — segment-aware source bundles.</p></div>
+      <div class="card"><h3>Score</h3><p>Six financial-health pillars → a single adaptive score → <span class="pill green">GREEN</span> <span class="pill amber">AMBER</span> <span class="pill red">RED</span>.</p></div>
+      <div class="card"><h3>Explain</h3><p>Plain-language reason codes + suggested limit. <span class="em">The underwriter decides.</span></p></div>
+    </div>
+    <p style="margin-top:20px" class="muted">Decision-<span class="em">support</span>, not auto-approve — exactly what the AMA mandated: “the AI gives the reason and logic; the credit decision lies with the underwriter.”</p>
+  </section>
+
+  <!-- 5 DATA -->
+  <section class="slide">
+    <h3>Alternate Data</h3>
+    <h2>Beyond GST & UPI — the signals a legacy model ignores</h2>
+    <div class="grid g4">
+      <div class="stat"><div class="num">GST</div><div class="lbl">turnover, filing discipline</div></div>
+      <div class="stat"><div class="num">UPI</div><div class="lbl">cash-flow velocity</div></div>
+      <div class="stat"><div class="num">AA</div><div class="lbl">consented bank statements</div></div>
+      <div class="stat"><div class="num">EPFO</div><div class="lbl">payroll size & continuity</div></div>
+      <div class="stat"><div class="num">⚡</div><div class="lbl">electricity = production proxy</div></div>
+      <div class="stat"><div class="num">⛽</div><div class="lbl">fuel = trade/logistics volume</div></div>
+      <div class="stat"><div class="num">FASTag</div><div class="lbl">fleet activity</div></div>
+      <div class="stat"><div class="num">Udyam</div><div class="lbl">vintage & formalisation</div></div>
+    </div>
+    <p style="margin-top:18px" class="muted">Gather broadly, then <span class="em">adaptively re-weight</span> — when GST/UPI are thin, lean on electricity, EPF, fuel. Never auto-reject a thin file.</p>
+  </section>
+
+  <!-- 6 SCORING -->
+  <section class="slide">
+    <h3>How it scores</h3>
+    <h2>Six pillars → adaptive weighting → one score</h2>
+    <div class="grid g3">
+      <div class="card"><b>Revenue & Scale</b><p>GST, UPI, e-way bills</p></div>
+      <div class="card"><b>Cash-Flow Health</b><p>buffer, volatility, surplus</p></div>
+      <div class="card"><b>Operational Vitality</b><p>electricity, fuel, FASTag</p></div>
+      <div class="card"><b>Stability & Formalisation</b><p>vintage, EPF, Udyam</p></div>
+      <div class="card"><b>Credit Discipline</b><p>bureau, EMIs, bounces</p></div>
+      <div class="card"><b>Identity & Reliability</b><p>KYC, MNRL, cross-checks</p></div>
+    </div>
+    <p style="margin-top:16px" class="em">weight = base(segment) × coverage × reliability</p>
+    <p class="muted">Missing source → its weight flows to the data we <em>do</em> have. Segment-aware and thin-file-safe.</p>
+  </section>
+
+  <!-- 7 MONEY SHOT -->
+  <section class="slide">
+    <h3>The difference</h3>
+    <h2>Same borrower. Two lenses.</h2>
+    <p class="lead">A 4-year fabrication unit · New-to-Credit · thin GST · but rising electricity + steady EPF.</p>
+    <div class="grid g2" style="margin-top:18px">
+      <div class="card" style="background:#f8fafc">
+        <h3>Traditional lens</h3>
+        <div class="big" style="color:var(--red)">Rejected</div>
+        <p class="muted">No bureau score, no strong financials → invisible → declined.</p>
+      </div>
+      <div class="card" style="border:2px solid var(--brand);background:#eef2ff">
+        <h3>Alternate-data lens</h3>
+        <div class="big" style="color:var(--amber)">AMBER · Review</div>
+        <p>Score 65/100 · suggested limit ₹5.4 L · <span class="em">“rising electricity signals growing production; steady EPF confirms a stable unit.”</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 EXPLAINABILITY -->
+  <section class="slide">
+    <h3>Explainability</h3>
+    <h2>No black box. Every score defends itself.</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Deterministic reason codes</h3>
+        <ul>
+          <li>“Rising electricity use (+7%) signals growing production.”</li>
+          <li>“New-to-Credit — assessed on alternate data.”</li>
+          <li>“To sharpen: add AA consent (confidence 67% → 83%).”</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Why it matters</h3>
+        <p>Templated from explicit values — <span class="em">reproducible & auditable</span> for RBI / fair-lending.</p>
+        <p style="margin-top:10px">SHAP on the model maps to the <em>same six pillars</em> — rule-based and model-based explanations corroborate.</p>
+        <p style="margin-top:10px" class="muted">Optional Gemini narration only <em>rephrases</em> — never touches the decision.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 RELIABILITY -->
+  <section class="slide center">
+    <div class="brandbar" style="margin:0 auto 22px"></div>
+    <h2 style="max-width:900px">Data can be wrong. We check it.</h2>
+    <p class="lead" style="max-width:820px">Independent revenue estimates from GST, UPI and bank must <span class="em">agree</span>.
+      Divergence → confidence drops → routed to manual review.</p>
+    <div class="card" style="margin-top:20px;max-width:720px">
+      <p><span class="em">Flagged:</span> “UPI implies ₹12 L/mo but bank implies ₹3.5 L/mo (44% variation) — verify before relying on the score.”</p>
+    </div>
+    <p class="muted" style="margin-top:12px">Directly answers the AMA concern: “wrong account number → false data.”</p>
+  </section>
+
+  <!-- 10 MODEL -->
+  <section class="slide">
+    <h3>The Model</h3>
+    <h2>Honest metrics — not raw accuracy</h2>
+    <p>Defaults are ~11% of the book, so accuracy is meaningless. We report the scorecard metrics a bank expects:</p>
+    <div class="grid g4" style="margin-top:8px">
+      <div class="stat"><div class="num">0.685→</div><div class="lbl">AUC-ROC (baseline → XGBoost)</div></div>
+      <div class="stat"><div class="num">0.37</div><div class="lbl">Gini</div></div>
+      <div class="stat"><div class="num">0.27</div><div class="lbl">KS statistic</div></div>
+      <div class="stat"><div class="num">✓</div><div class="lbl">calibrated by decile</div></div>
+    </div>
+    <p style="margin-top:16px">Rule-based score validated too: default rate
+      <span class="pill green">4%</span> <span class="pill amber">9%</span> <span class="pill red">18%</span>
+      across bands — clean separation.</p>
+  </section>
+
+  <!-- 11 IMPACT -->
+  <section class="slide">
+    <h3>Impact</h3>
+    <h2>Financial inclusion, quantified</h2>
+    <div class="grid g3">
+      <div class="stat"><div class="num">84.9%</div><div class="lbl">of New-to-Credit applicants become approvable</div></div>
+      <div class="stat"><div class="num">82%</div><div class="lbl">of thin-file applicants become approvable</div></div>
+      <div class="stat"><div class="num">80.3%</div><div class="lbl">inclusion lift — credit-invisible borrowers recovered</div></div>
+    </div>
+    <p style="margin-top:18px" class="muted">Of borrowers a bureau+GST-only model can’t even assess, we safely bring <span class="em">4 in 5</span> into review or approval — while default rates stay flat across NTC and non-NTC.</p>
+  </section>
+
+  <!-- 12 FAIRNESS -->
+  <section class="slide">
+    <h3>Fairness & Governance</h3>
+    <h2>Built to be deployed by a regulated bank</h2>
+    <div class="grid g2">
+      <div class="card">
+        <h3>Disparate impact (four-fifths)</h3>
+        <ul>
+          <li>New-to-Credit parity — DI <span class="em">0.912 ✓</span> (equal default rates)</li>
+          <li>Geography — DI <span class="em">0.939 ✓</span> (decision layer is geography-blind)</li>
+          <li>Segment DI 0.642 — <span class="em">risk-justified</span>, tracks actual default</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Governance guarantees</h3>
+        <ul>
+          <li>Human-in-the-loop; thin-file → review, never auto-reject</li>
+          <li>Consent-first (AA), data-minimising (DPDP Act)</li>
+          <li>Deterministic, auditable explanations</li>
+          <li>Drift + disparate-impact monitoring (Model Card)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 ARCHITECTURE -->
+  <section class="slide">
+    <h3>Architecture</h3>
+    <h2>Ecosystem-native, sandbox-ready</h2>
+    <div class="flow">
+      <span class="box">AA / OCEN / ULI</span><span class="arrow">→</span>
+      <span class="box">Connectors</span><span class="arrow">→</span>
+      <span class="box">Scoring engine (6 pillars)</span><span class="arrow">→</span>
+      <span class="box">PD model + SHAP</span><span class="arrow">→</span>
+      <span class="box">Underwriter cockpit</span>
+    </div>
+    <div class="grid g3" style="margin-top:22px">
+      <div class="card"><h3>Deploy</h3><p>Containerised — on-prem or the bank’s <span class="em">AWS</span> sandbox.</p></div>
+      <div class="card"><h3>Stack</h3><p>FastAPI · Next.js · gradient boosting · SHAP.</p></div>
+      <div class="card"><h3>Swap-in</h3><p>Synthetic feed → real sandbox APIs with no rework.</p></div>
+    </div>
+  </section>
+
+  <!-- 14 ROADMAP / ASK -->
+  <section class="slide center">
+    <div class="brandbar" style="margin:0 auto 22px"></div>
+    <h2>From prototype to portfolio</h2>
+    <div class="grid g3" style="margin-top:10px;width:100%">
+      <div class="card"><h3>Now</h3><p>Working prototype on synthetic data — scoring, model, explainability, cockpit, governance.</p></div>
+      <div class="card"><h3>Sandbox PoC</h3><p>Wire real AA/GST/ULI feeds; recalibrate the model on IDBI data.</p></div>
+      <div class="card"><h3>Pilot</h3><p>Shadow-mode with underwriters; measure approval lift at fixed risk.</p></div>
+    </div>
+    <p class="lead" style="margin-top:24px">Make the credit-invisible bankable — safely.</p>
+    <div class="foot"><span>MSME Financial Health Card</span><span>IDBI Innovate 2026 · Track 03</span></div>
+  </section>
+
+</div>
+
+<div class="nav" id="nav"></div>
+<script>
+  const slides=[...document.querySelectorAll('.slide')];
+  const nav=document.getElementById('nav');let i=0;
+  slides.forEach((_,k)=>{const b=document.createElement('button');b.className='dot'+(k===0?' on':'');
+    b.onclick=()=>go(k);nav.appendChild(b);});
+  const dots=[...nav.children];
+  function go(n){i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach((s,k)=>s.classList.toggle('active',k===i));
+    dots.forEach((d,k)=>d.classList.toggle('on',k===i));}
+  document.addEventListener('keydown',e=>{
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown')go(i+1);
+    if(e.key==='ArrowLeft'||e.key==='PageUp')go(i-1);
+    if(e.key==='Home')go(0);if(e.key==='End')go(slides.length-1);});
+  document.addEventListener('click',e=>{if(e.target.closest('.nav'))return;
+    if(e.clientX>window.innerWidth*0.6)go(i+1);else if(e.clientX<window.innerWidth*0.4)go(i-1);});
+</script>
+</body>
+</html>

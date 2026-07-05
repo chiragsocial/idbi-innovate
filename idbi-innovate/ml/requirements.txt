@@ -1,0 +1,6 @@
+# ML training deps — install on your PERSONAL laptop (this office machine has no pip).
+scikit-learn>=1.3
+xgboost>=2.0
+numpy>=1.24
+joblib>=1.3
+shap>=0.44        # used in Phase 4 for explainability on the trained model

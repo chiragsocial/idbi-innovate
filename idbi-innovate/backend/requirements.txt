@@ -1,0 +1,11 @@
+# Minimal backend deps — the predictor falls back to the pure-Python logreg model,
+# so sklearn/xgboost are NOT required to serve a probability-of-default.
+fastapi>=0.110
+uvicorn[standard]>=0.29
+pydantic>=2.6
+
+# Optional: uncomment to serve the calibrated XGBoost model.joblib instead of logreg.
+# scikit-learn>=1.3
+# xgboost>=2.0
+# joblib>=1.3
+# numpy>=1.24
