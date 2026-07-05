@@ -12,19 +12,19 @@ export default function PortfolioDashboard({ p }: { p: Record<string, any> }) {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
         <Kpi
           icon={<Users className="text-brand" />}
-          value={`${((p.ntc?.rate ?? 0) * 100).toFixed(0)}%`}
+          value={`${((p.ntc?.rate ?? 0) * 100).toFixed(1)}%`}
           label="New-to-Credit applicants approvable"
           sub={`${p.ntc?.approvable}/${p.ntc?.total} NTC applicants`}
         />
         <Kpi
           icon={<ShieldCheck className="text-brand" />}
-          value={`${((p.thin_file?.rate ?? 0) * 100).toFixed(0)}%`}
+          value={`${((p.thin_file?.rate ?? 0) * 100).toFixed(1)}%`}
           label="Thin-file applicants approvable"
           sub={`${p.thin_file?.approvable}/${p.thin_file?.total} thin-file applicants`}
         />
         <Kpi
           icon={<TrendingUp className="text-brand" />}
-          value={`${((p.inclusion_lift?.rate ?? 0) * 100).toFixed(0)}%`}
+          value={`${((p.inclusion_lift?.rate ?? 0) * 100).toFixed(1)}%`}
           label="Inclusion lift"
           sub={`${p.inclusion_lift?.recovered_by_alt_data}/${p.inclusion_lift?.traditionally_invisible} credit-invisible borrowers recovered`}
           highlight
