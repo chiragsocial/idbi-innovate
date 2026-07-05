@@ -22,7 +22,7 @@ export default function HealthCard({ initial }: { initial: Card }) {
     <div className="space-y-4">
       {/* header */}
       <div className="card p-5">
-        <div className="flex flex-wrap items-start justify-between gap-4">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <div className="flex items-center gap-2">
               <Building2 size={18} className="text-slate-400" />
@@ -51,7 +51,7 @@ export default function HealthCard({ initial }: { initial: Card }) {
               )}
             </div>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex shrink-0 flex-col items-center">
             <ScoreGauge score={card.unified_score} rag={card.rag} />
             <div className="mt-1 flex items-center gap-1 text-sm font-semibold">
               <IndianRupee size={14} className="text-slate-400" />
