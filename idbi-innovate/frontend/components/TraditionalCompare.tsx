@@ -60,8 +60,8 @@ export default function TraditionalCompare({
                 <CheckCircle2 size={12} /> Assessable
               </span>
               <div className="mt-2 text-3xl font-bold text-slate-700">
-                {tradConf !== null ? ${tradConf.toFixed(0)}% : "—"}
-                <span className="ml-1 text-sm font-medium text-slate-400">data-confidence
+                {tradConf !== null ? `${tradConf.toFixed(0)}%` : "—"}
+                <span className="ml-1 text-sm font-medium text-slate-400">data-confidence</span>
               </div>
               <p className="mt-2 text-xs text-slate-500">
                 Bureau/GST alone is thin evidence — and it rejects the ~40% who have neither.
@@ -71,7 +71,7 @@ export default function TraditionalCompare({
         </div>
 
         <div className="rounded-xl border-2 border-brand bg-brand-light/40 p-4">
-          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase ">
+          <div className="mb-2 flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide text-brand-dark">
             <Eye size={14} /> With alternate data (our model)
           </div>
           <div className="flex items-center gap-2">
@@ -79,7 +79,7 @@ export default function TraditionalCompare({
             <RecoBadge reco={current.recommendation} />
           </div>
           <div className="mt-2 text-sm text-slate-700">
-            Score <b className="tabular-nums">{current.unified_score.toFixed(0)}</b> · li
+            Score <b className="tabular-nums">{current.unified_score.toFixed(0)}</b> · limit{" "}
             <b>{inr(current.suggested_limit)}</b> ·{" "}
             <b className="tabular-nums">{fullConf.toFixed(0)}%</b> confidence
           </div>
@@ -91,7 +91,7 @@ export default function TraditionalCompare({
       </div>
 
       <p className="mt-3 text-xs text-slate-500">
-        Our edge is <b>reach &amp; confidence</b>: we bring credit-invisible MSMEs into a
+        Our edge is <b>reach &amp; confidence</b>: we bring credit-invisible MSMEs into assessment
         and decide on richer evidence — not a higher score for the already-documented.
       </p>
     </div>
